@@ -1,0 +1,15 @@
+module alu(ra,rb,op,out);
+
+input [7:0]ra;
+input [7:0]rb;
+input [3:0]op;
+output [7:0]out;
+
+assign out=(op==1)?ra+rb: //add
+	(op==2)?ra-rb: //sub
+	(op==3)?~(ra&rb): //nand
+	(op==4)?ra<<1: //shl
+	(op==5)?ra>>1: //shr
+	(op==8)?rb : ra; //mov nop
+
+endmodule
